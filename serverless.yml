@@ -49,14 +49,15 @@ functions:
 
 resources:
   Resources:
-    InsultsDb:
+    BonzDb:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: bonz-db
+        TableName: Bonz-db
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
         KeySchema:
           - AttributeName: id
             KeyType: HASH # Partition key/Primary key
+
         BillingMode: PAY_PER_REQUEST
