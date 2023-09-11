@@ -1,0 +1,62 @@
+service: awsUsingServerless
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  profile: serverlessUser
+  region: eu-north-1
+  iam:
+    role: arn:aws:iam::990371472798:role/course-role
+
+plugins:
+  - serverless-webpack
+
+package:
+  individually: true
+
+functions:
+  getBooking:
+    handler: functions/getBooking/index.handler
+    events:
+      - httpApi:
+          path: '/api/booking'
+          method: GET
+  postBooking:
+    handler: functions/postBooking/index.handler
+    events:
+      - httpApi:
+          path: '/api/booking'
+          method: POST
+  updateBooking:
+    handler: functions/updateBooking/index.handler
+    events:
+      - httpApi:
+          path: '/api/booking/{bookingId}'
+          method: POST
+  deleteBooking:
+    handler: functions/deleteBooking/index.handler
+    events:
+      - httpApi:
+          path: '/api/booking/{BookingId}'
+          method: DELETE
+  allBookings:
+    handler: functions/allBookings/index.handler
+    events:
+      - httpApi:
+          path: '/api/allbookings'
+          method: GET
+
+resources:
+  Resources:
+    InsultsDb:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: bonz-db
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH # Partition key/Primary key
+        BillingMode: PAY_PER_REQUEST
