@@ -54,10 +54,10 @@ resources:
       Properties:
         TableName: Bonz-db
         AttributeDefinitions:
-          - AttributeName: id
+          - AttributeName: bookingId
             AttributeType: S
         KeySchema:
-          - AttributeName: id
+          - AttributeName: bookingId
             KeyType: HASH # Partition key/Primary key
 
         BillingMode: PAY_PER_REQUEST
