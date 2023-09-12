@@ -20,7 +20,7 @@ functions:
     handler: functions/getBooking/index.handler
     events:
       - httpApi:
-          path: '/api/booking'
+          path: '/api/booking/{bookingId}'
           method: GET
   postBooking:
     handler: functions/postBooking/index.handler
