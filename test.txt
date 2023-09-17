@@ -1,0 +1,41 @@
+    // check if the rooms available can accommodate the number of guests according to the capacity of each room type and allocate rooms accordingly
+    else if (guests > (rooms_info.single.capacity * rooms_info.single.rooms) + (rooms_info.double.capacity * rooms_info.double.rooms)) {
+        for (let i = 0; i < guests;) {
+            if (rooms_info.suite.rooms > 0) {
+                rooms.suiteRoom += 1
+                rooms_info.suite.occupied += 1
+                rooms_info.suite.rooms -= 1
+                i += 3
+                guests -= 3
+            }
+        }
+    }
+    // check if the rooms available can accommodate the number of guests according to the capacity of each room type and allocate rooms accordingly
+    else if (guests > (rooms_info.single.capacity * rooms_info.single.rooms)) {
+        for (let i = 0; i < guests;) {
+            if (rooms_info.double.rooms > 0) {
+                rooms.doubleRoom += 1
+                rooms_info.double.occupied += 1
+                rooms_info.double.rooms -= 1
+                i += 2
+                guests -= 2
+            } else if (rooms_info.suite.rooms > 0) {
+                rooms.suiteRoom += 1
+                rooms_info.suite.occupied += 1
+                rooms_info.suite.rooms -= 1
+                i += 3
+                guests -= 3
+            }
+        } 
+    }else if (guests > (rooms_info.single.capacity * rooms_info.single.rooms)) {
+        // check if there are no double and suits rooms available and allocate rooms accordingly
+        for (let i = 0; i < guests;) {
+            if (rooms_info.single.rooms > 0) {
+                rooms.singleRoom += 1
+                rooms_info.single.occupied += 1
+                rooms_info.single.rooms -= 1
+                i += 1
+                guests -= 1 
+            }
+        }
+    }

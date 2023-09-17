@@ -38,10 +38,10 @@ functions:
     handler: functions/deleteBooking/index.handler
     events:
       - httpApi:
-          path: '/api/booking/{BookingId}'
+          path: '/api/booking/{bookingId}'
           method: DELETE
   allBookings:
-    handler: functions/allBookings/index.handler
+    handler: functions/allbookings/index.handler
     events:
       - httpApi:
           path: '/api/allbookings'
